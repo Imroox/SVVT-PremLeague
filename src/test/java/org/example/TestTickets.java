@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -40,7 +41,65 @@ public class TestTickets {
     }
 
     @Test
-    public void testAutoSuggestion () throws InterruptedException {
+    public void testAmount () throws InterruptedException {
+        webDriver.get(baseUrl);
+        Thread.sleep(2000);
+
+        webDriver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//*[@id=\"advertClose\"]")).click();
+        Thread.sleep(new Random().nextInt(2000) + 3000);
+        webDriver.findElement(By.xpath("/html/body/header/div/nav/ul/li[11]/a")).click();
+        Thread.sleep(5000);
+        webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/section[2]/div[2]/button[10]")).click();
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("window.scrollBy(0, 300);");
+        Thread.sleep(5000);
+
+        //webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/section[3]/div[18]/div[2]/div/a[1]")).click();
+        webDriver.navigate().to("https://tickets.itfc.co.uk/");
+
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//*[@id=\"navMenu_Main_SubscriptionList_item\"]")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//*[@id=\"ctl00$body$SeriesListControl_btnAddToBasket_0\"]")).click();
+        Thread.sleep(3000);
+        webDriver.findElement(By.xpath("//*[@id=\"ctl00_body_SelectTickets_Container\"]/div[5]/div[3]/div[2]/span/a[1]")).click();
+        assertEquals(webDriver.findElement(By.xpath("//*[@id=\"ctl00_body_SelectTickets_Container\"]/div[6]/span[3]")).getText(), "£65.00");
+
+    }
+    @Test
+    public void testInvalidBalance () throws InterruptedException {
+        webDriver.get(baseUrl);
+        Thread.sleep(2000);
+
+        webDriver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//*[@id=\"advertClose\"]")).click();
+        Thread.sleep(new Random().nextInt(2000) + 3000);
+        webDriver.findElement(By.xpath("/html/body/header/div/nav/ul/li[11]/a")).click();
+        Thread.sleep(5000);
+        webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/section[2]/div[2]/button[10]")).click();
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("window.scrollBy(0, 300);");
+        Thread.sleep(5000);
+
+        //webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/section[3]/div[18]/div[2]/div/a[1]")).click();
+        webDriver.navigate().to("https://tickets.itfc.co.uk/");
+
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//*[@id=\"navMenu_Main_SubscriptionList_item\"]")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//*[@id=\"ctl00$body$SeriesListControl_btnAddToBasket_0\"]")).click();
+
+        webDriver.findElement(By.xpath("//*[@id=\"ctl00_body_SelectTickets_Container\"]/div[5]/div[5]/div[2]/span/input")).sendKeys("00000000000000");
+        Thread.sleep(3000);
+
+        WebElement spanElement = webDriver.findElement(By.xpath("//*[@id=\"ctl00_body_SelectTickets_Container\"]/div[6]/span[1]"));
+
+        assertFalse(spanElement.isDisplayed(), "The span element is visible, but it shouldn't be.");
+
+
 
     }
 
