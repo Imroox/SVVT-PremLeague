@@ -58,7 +58,7 @@ public class TestPlayerStats {
 
     @Test
     public void checkStatsOfPlayer() throws InterruptedException {
-        webDriver.get("https://www.premierleague.com/");
+        webDriver.get(baseUrl);
         Thread.sleep(1000);
         webDriver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
         Thread.sleep(3000);

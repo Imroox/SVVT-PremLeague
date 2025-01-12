@@ -70,7 +70,7 @@ public class TestSearch {
             }
         }
 
-       assertTrue(foundManchesterUnited && foundManchesterCity, "Expected both 'Manchester United' or 'Manchester City' in the auto-suggestions.");
+       assertTrue(foundManchesterUnited && foundManchesterCity, "Expected both 'Manchester United' and 'Manchester City' in the auto-suggestions.");
     }
     @Test
     public void testSearch() throws InterruptedException {
@@ -125,8 +125,6 @@ public class TestSearch {
 
         Thread.sleep(4000);
         assertTrue(totalResults > totalResult2);
-
-
     }
 
 

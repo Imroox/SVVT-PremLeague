@@ -73,12 +73,6 @@ public class TestManager {
         assertEquals(loseStat, 35);
 
 
-
-
-
-
-
-
     }
 
 

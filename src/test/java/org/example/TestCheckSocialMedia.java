@@ -81,7 +81,6 @@ public class TestCheckSocialMedia {
         String currentUrl = webDriver.getCurrentUrl();
         assertEquals(currentUrl, "https://www.youtube.com/premierleague");
 
-
     }
     @Test
     public void checkSpotify() throws InterruptedException{
@@ -102,7 +101,6 @@ public class TestCheckSocialMedia {
         Thread.sleep(7000);
         String currentUrl = webDriver.getCurrentUrl();
         assertEquals(currentUrl, "https://open.spotify.com/user/plplaylists");
-
 
     }
 

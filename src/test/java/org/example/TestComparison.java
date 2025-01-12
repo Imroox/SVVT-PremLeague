@@ -43,7 +43,6 @@ public class TestComparison {
     public void testPlayerComparison() throws InterruptedException {
         webDriver.get(baseUrl);
         Thread.sleep(2000);
-
         webDriver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//*[@id=\"advertClose\"]")).click();
@@ -53,12 +52,9 @@ public class TestComparison {
         webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/nav/ul/li[8]/a")).click();
         webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[2]/div[1]")).click();
         Thread.sleep(4000);
-
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("arguments[0].click();",webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[2]/div[1]/div[1]/div/div[1]/span")));
-
         Thread.sleep(7000);
-
         webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[1]/div[2]/div[1]/nav/ul/li[2]")).click();
         Thread.sleep(3000);
         webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[1]/div[2]/div[1]/div/div[2]/div/input")).sendKeys("Didier Drogba");
@@ -70,16 +66,12 @@ public class TestComparison {
         webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[1]/div[2]/div[1]/div/div[2]/div/input")).sendKeys("Peter Crouch");
         webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[1]/div[2]/div[3]/div[2]/div/ul/li")).click();
         Thread.sleep(4000);
-
         js.executeScript("window.scrollBy(0, 200);");
         Thread.sleep(5000);
-
         WebElement DrogbaGoals = webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[2]/div[3]/ul/li[1]/div[2]/div[1]/div[2]/div[2]/span"));
-        assertEquals("104", DrogbaGoals.getText(), "Amount of goals that Drogba scored should be 254");
-
+        assertEquals("104", DrogbaGoals.getText(), "Amount of goals that Drogba scored should be 104");
         int crouchGoals = Integer.parseInt(webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[2]/div[3]/ul/li[1]/div[2]/div[2]/div[2]/div[2]/span")).getText());
         int drogbaGoals = Integer.parseInt(DrogbaGoals.getText());
-
         assertTrue(drogbaGoals < crouchGoals, "Didier Drogba should have less goals than Peter Crouch");
     }
 
@@ -106,11 +98,6 @@ public class TestComparison {
         int arsenalGoals = Integer.parseInt(webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[4]/div[1]/table/tbody/tr[1]/td[3]/p")).getText());
         int leicesterGoals = Integer.parseInt(webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[2]/div/section[4]/div[1]/table/tbody/tr[1]/td[1]/p")).getText());
         assertTrue(arsenalGoals > leicesterGoals);
-
-
-
-
-
 
     }
 

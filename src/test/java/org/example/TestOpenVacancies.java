@@ -73,7 +73,7 @@ public class TestOpenVacancies {
         webDriver.findElement(By.xpath("//*[@id=\"job_seeker_form_job_seeker_last_name\"]")).click();
         webDriver.findElement(By.xpath("//*[@id=\"job_seeker_form_job_seeker_last_name\"]")).sendKeys("Test");
         webDriver.findElement(By.xpath("//*[@id=\"job_seeker_form_job_seeker_email\"]")).click();
-        webDriver.findElement(By.xpath("//*[@id=\"job_seeker_form_job_seeker_email\"]")).sendKeys("testic3434343test333@gmail.com");
+        webDriver.findElement(By.xpath("//*[@id=\"job_seeker_form_job_seeker_email\"]")).sendKeys("testic3343test333@gmail.com");
         js.executeScript("arguments[0].scrollIntoView(true);", webDriver.findElement(By.xpath("//*[@id=\"talent-pipeline-fieldset-resume\"]/legend")));
         Thread.sleep(4000);
 
@@ -141,7 +141,7 @@ public class TestOpenVacancies {
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//*[@id=\"talent-pipeline-fieldset-submit\"]/div/div[3]/button")).click();
         Thread.sleep(3000);
-        String errorMessage = webDriver.findElement(By.xpath("//*[@id=\"Shared::Thumbtack::Callout::Simplecallout-react-component-f863661b-ce38-479e-8527-956998ebd937\"]/div/div")).getText();
+        String errorMessage = webDriver.findElement(By.xpath("/html/body/div[1]/section[2]/div/div/form/fieldset[1]/div")).getText();
         assertTrue(errorMessage.contains("Résumé / CV can't be blank"));
 
     }

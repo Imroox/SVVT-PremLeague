@@ -72,29 +72,22 @@ public class TestNavigation {
         Thread.sleep(1000);
     }
     @Test
-
       public void testPlayerStats() throws InterruptedException{
         webDriver.get(baseUrl);
         webDriver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
         webDriver.findElement(By.xpath("//*[@id=\"advertClose\"]")).click();
-
-
         webDriver.findElement(By.xpath("/html/body/header/div/nav/ul/li[3]/a")).click();
         Thread.sleep(5000);
-
         WebElement element = webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/div[1]/div[2]/section/div[5]/div[1]/time[1]"));
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         Thread.sleep(4000);
-
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
         WebElement matchFixture = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"mainContent\"]/div[3]/div[1]/div[2]/section/div[6]/div[2]/ul/li[1]")));
         matchFixture.click();
         webDriver.get(helpUrl);
         Thread.sleep(3000);
-
         webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div/section[2]/div[2]/div/div[1]/div/div/ul/li[2]")).click();
-
         Thread.sleep(4000);
         js.executeScript("arguments[0].scrollIntoView(true);",webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div/section[2]/div[2]/div/div[2]/section[2]/div/div/div[1]/div/div/h3[3]")));
         Thread.sleep(3000);
@@ -107,11 +100,5 @@ public class TestNavigation {
         Thread.sleep(4000);
         String goals2 = webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/div/ul/div[5]/ul/li[1]/a/div/div[1]/div[2]/ul/li[2]/div[2]")).getText();
         assertEquals(goals, goals2);
-
-
-
-
-
-
     }
 }

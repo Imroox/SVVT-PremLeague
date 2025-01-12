@@ -56,8 +56,9 @@ public class TestTickets {
         js.executeScript("window.scrollBy(0, 300);");
         Thread.sleep(5000);
 
-        //webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/section[3]/div[18]/div[2]/div/a[1]")).click();
-        webDriver.navigate().to("https://tickets.itfc.co.uk/");
+        WebElement linkElement = webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/section[3]/div[10]/div[2]/div/a[1]"));
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].removeAttribute('target');", linkElement);
+        linkElement.click();
 
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//*[@id=\"navMenu_Main_SubscriptionList_item\"]")).click();
@@ -84,8 +85,9 @@ public class TestTickets {
         js.executeScript("window.scrollBy(0, 300);");
         Thread.sleep(5000);
 
-        //webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/section[3]/div[18]/div[2]/div/a[1]")).click();
-        webDriver.navigate().to("https://tickets.itfc.co.uk/");
+        WebElement linkElement = webDriver.findElement(By.xpath("//*[@id=\"mainContent\"]/div[3]/section[3]/div[10]/div[2]/div/a[1]"));
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].removeAttribute('target');", linkElement);
+        linkElement.click();
 
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//*[@id=\"navMenu_Main_SubscriptionList_item\"]")).click();
@@ -98,8 +100,6 @@ public class TestTickets {
         WebElement spanElement = webDriver.findElement(By.xpath("//*[@id=\"ctl00_body_SelectTickets_Container\"]/div[6]/span[1]"));
 
         assertFalse(spanElement.isDisplayed(), "The span element is visible, but it shouldn't be.");
-
-
 
     }
 
